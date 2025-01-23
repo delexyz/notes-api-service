@@ -61,6 +61,7 @@ mvn clean install
 ```
 mvn clean install
 ```
-* Step 4: Access Swagger UI:
-  Navigate to http://localhost:8080/swagger-ui/index.html
+* Step 4: Access Swagger UI locally or on my cloud run deployment:
+<br>Locally: http://localhost:8080/swagger-ui/index.html
+<br>Cloud Run: https://speer-notes-app-305262822763.us-central1.run.app/swagger-ui/index.html
 
