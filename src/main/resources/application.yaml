@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: notes-api-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  http:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+resilience4j.ratelimiter:
+  instances:
+    default:
+      limitForPeriod: 10
+      limitRefreshPeriod: 1s
+      timeoutDuration: 1s
+
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui
+
+jwt:
+  secretKey: ${JWT_SECRET_KEY}
+  tokenExpiryMinutes: 480
