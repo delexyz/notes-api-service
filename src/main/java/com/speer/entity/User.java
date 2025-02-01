@@ -3,6 +3,7 @@ package com.speer.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.speer.dto.UserReqDto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import static com.speer.utils.DateUtils.getCurrentTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {

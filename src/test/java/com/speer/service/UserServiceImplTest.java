@@ -55,7 +55,7 @@ class UserServiceImplTest {
 
         ResponseDto response = userService.signUp(validUserReqDto);
 
-        assertTrue(response.getSuccessful());
+        assertTrue(response.getIsSuccessful());
         assertEquals("User created successfully", response.getMessage());
         verify(userRepository, times(1)).save(any(User.class));
     }
@@ -64,7 +64,7 @@ class UserServiceImplTest {
     void signUp_withInvalidUser_shouldReturnFailure() {
         ResponseDto response = userService.signUp(invalidUserReqDto);
 
-        assertFalse(response.getSuccessful());
+        assertFalse(response.getIsSuccessful());
         assertEquals("First name is required", response.getMessage());
         verify(userRepository, never()).save(any(User.class));
     }
@@ -75,7 +75,7 @@ class UserServiceImplTest {
 
         ResponseDto response = userService.signUp(validUserReqDto);
 
-        assertFalse(response.getSuccessful());
+        assertFalse(response.getIsSuccessful());
         assertEquals("User already exists with this email", response.getMessage());
         verify(userRepository, never()).save(any(User.class));
     }
@@ -88,7 +88,7 @@ class UserServiceImplTest {
 
         AuthUserResDto response = userService.login(userCredentialDto);
 
-        assertTrue(response.getAuthenticated());
+        assertTrue(response.getIsAuthenticated());
         assertEquals("Login successful", response.getStatus());
         assertNotNull(response.getJwt());
         verify(jwtProvider, times(1)).generateToken(user.getEmail(), user.getId());
@@ -100,7 +100,7 @@ class UserServiceImplTest {
 
         AuthUserResDto response = userService.login(userCredentialDto);
 
-        assertFalse(response.getAuthenticated());
+        assertFalse(response.getIsAuthenticated());
         assertEquals("User not found!", response.getStatus());
         assertNull(response.getJwt());
         verify(jwtProvider, never()).generateToken(anyString(), anyLong());
@@ -113,7 +113,7 @@ class UserServiceImplTest {
 
         AuthUserResDto response = userService.login(userCredentialDto);
 
-        assertFalse(response.getAuthenticated());
+        assertFalse(response.getIsAuthenticated());
         assertEquals("Incorrect password", response.getStatus());
         assertNull(response.getJwt());
         verify(jwtProvider, never()).generateToken(anyString(), anyLong());

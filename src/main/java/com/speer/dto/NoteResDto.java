@@ -1,11 +1,13 @@
 package com.speer.dto;
 
 import com.speer.entity.Note;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class NoteResDto {
     private Long id;
     private String title;

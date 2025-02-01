@@ -11,8 +11,6 @@ import com.speer.entity.Note;
 import com.speer.entity.User;
 import com.speer.repository.NoteRepository;
 import com.speer.repository.UserRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -65,7 +63,7 @@ public class NoteServiceImplTest {
 
         ResponseDto response = noteService.createNote(noteReqDto);
 
-        assertTrue(response.getSuccessful());
+        assertTrue(response.getIsSuccessful());
         assertEquals("Note created successfully", response.getMessage());
     }
 
@@ -86,7 +84,7 @@ public class NoteServiceImplTest {
 
         ResponseDto response = noteService.updateNote(noteUpdDto);
 
-        assertTrue(response.getSuccessful());
+        assertTrue(response.getIsSuccessful());
         assertEquals("Note updated successfully", response.getMessage());
     }
 
@@ -105,7 +103,7 @@ public class NoteServiceImplTest {
 
         ResponseDto response = noteService.deleteNoteById(1L);
 
-        assertTrue(response.getSuccessful());
+        assertTrue(response.getIsSuccessful());
         assertEquals("Note deleted successfully", response.getMessage());
     }
 
@@ -121,7 +119,7 @@ public class NoteServiceImplTest {
 
         ResponseDto response = noteService.getNoteById(1L);
 
-        assertTrue(response.getSuccessful());
+        assertTrue(response.getIsSuccessful());
         assertEquals("Note found successfully", response.getMessage());
     }
 
@@ -161,7 +159,7 @@ public class NoteServiceImplTest {
 
         ResponseDto response = noteService.shareNoteWithUser(1L, "test@example.com");
 
-        assertTrue(response.getSuccessful());
+        assertTrue(response.getIsSuccessful());
         assertEquals("Note shared successfully with test@example.com", response.getMessage());
     }
 
