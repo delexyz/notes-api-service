@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +84,7 @@ public class ApiController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    @Operation(summary = "Create a new note for the authenticated user")
+    @Operation(summary = "Share note with other user by email")
     @PostMapping(value = "/notes/{noteId}/share/{beneficiaryEmail}")
     @RateLimiter(name = "default")
     public ResponseEntity<ResponseDto> shareNoteWithUser(@PathVariable("noteId") Long noteId,
@@ -104,6 +105,12 @@ public class ApiController {
     @GetMapping("/ping")
     @RateLimiter(name = "default")
     public ResponseEntity<Map<String, String>> ping() {
+//        int i = 0;
+//        while(LocalDateTime.now().isBefore(LocalDateTime.now().plusHours(12))) {
+//            // Simulate a long running process
+//            i++;
+//            System.out.println("Service is running the " + i + "th iteration...");
+//        }
         return new ResponseEntity<>(Collections.singletonMap("status", "Service is running..."), HttpStatus.OK);
     }
 }
